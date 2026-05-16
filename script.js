@@ -7,10 +7,8 @@ function Books(title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read) { 
-    title = title.value; 
-    author = author.value; 
-    pages = pages.value; 
-    read = read.value; 
+    let newBook = new Books(title, author, pages, read) 
+    myLibrary.push(newBook); 
 }
 
 const container = document.querySelector(".container"); 
@@ -19,6 +17,8 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author"); 
 const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");  
+
+const header1 = document.querySelector(".header")
 
 const submitBook = document.querySelector(".submit")
 
@@ -53,12 +53,14 @@ function createBookCards() {
 
 createBookCards(); 
 
-submitBook.addEventListener("click", () => { 
-    alert(title.value); 
+submitBook.addEventListener("click", (event) => { 
+    event.preventDefault(); 
+    addBookToLibrary(title.value, author.value, pages.value, read.value); 
+    /*alert(title.value); 
     alert(author.value); 
     alert(pages.value); 
-    alert(read.value); 
-
+    alert(read.value);*/ 
+    createBookCards(); 
 }); 
  
 
